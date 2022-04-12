@@ -7,6 +7,10 @@
     <title>STUDENT PROFILE</title>
 </head>
 <body>
-    
+    <ul>
+        {% for student in students %}
+        <li>{{ student.name }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
