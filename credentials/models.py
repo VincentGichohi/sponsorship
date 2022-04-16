@@ -39,6 +39,8 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
         unique = True,
     )
     is_active = models.BooleanField(default=True)
+    is_student = models.BooleanField(default=False)
+    is_sponsor = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
 
