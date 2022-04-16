@@ -1,5 +1,6 @@
 from tabnanny import verbose
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 class UserManager(BaseUserManager):
@@ -43,6 +44,8 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     is_sponsor = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(default=timezone.now)
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
