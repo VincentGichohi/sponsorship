@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'staff.apps.StaffConfig',
     'credentials.apps.CredentialsConfig',
     'phonenumber_field',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
