@@ -31,8 +31,10 @@ class UserManager(BaseUserManager):
         )
         user.staff = True
         user.admin = True
+        user.is_superuser = True
         user.save(using=self.db)
         return user
+        
 class MyUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         verbose_name = 'email address',
@@ -44,10 +46,9 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     is_sponsor = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(default=timezone.now)
 
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'    
     REQUIRED_FIELDS = []
 
     objects = UserManager()
