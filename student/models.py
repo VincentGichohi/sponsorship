@@ -1,7 +1,7 @@
 from django.db import models
 from credentials.models import MyUser
 class Student(models.Model):
-    user = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True, default=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=50)
@@ -14,7 +14,7 @@ class Student(models.Model):
         return self.first_name
 
 class School(models.Model):
-    user = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True, default=False)
     school_name = models.CharField(max_length=100)
     school_address = models.CharField(max_length=50)
     academic_level = models.CharField(max_length=30)
@@ -22,4 +22,5 @@ class School(models.Model):
 
     def __init__(self):
         return self.school_name
+
 
