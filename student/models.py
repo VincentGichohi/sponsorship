@@ -16,6 +16,7 @@ class Student(models.Model):
         super().__init__(*args, **kwargs)
         return self.first_name + " " + self.last_name
 
+
 class School(models.Model):
     user = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True, default=False)
     school_name = models.CharField(max_length=100)
