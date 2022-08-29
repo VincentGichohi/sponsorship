@@ -8,12 +8,12 @@ class Student(models.Model):
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=50)
     phone = models.IntegerField()
-    email = models.EmailField(max_length=50,blank=False)
+    email = models.EmailField(max_length=50, blank=False)
     birth_certificate = models.ImageField(blank=False)
     national_id = models.ImageField(blank=False)
 
     def __init__(self):
-        return self.first_name
+        return self.first_name + " " + self.last_name
 
 class School(models.Model):
     user = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True, default=False)
