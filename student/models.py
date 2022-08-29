@@ -1,5 +1,7 @@
 from django.db import models
-from credentials.models import MyUser
+from credentials.models import *
+
+
 class Student(models.Model):
     user = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True, default=False)
     first_name = models.CharField(max_length=100)
