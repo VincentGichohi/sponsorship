@@ -14,19 +14,20 @@ USER_TYPE = [
     ('STUDENT', 'Student')
 ]
 
+
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, ** extra_fields):
+    def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError('Users must have an email address')
-        
+
         user = self.model(
-            email = self.normalize_email(email, ** extra_fields),
+            email=self.normalize_email(email, **extra_fields),
         )
         user.set_password(password)
         user.save(using=self.db)
         return user
 
-    def create_staffuser(self, email, password, ** extra_fields):
+    def create_staffuser(self, email, password, **extra_fields):
         user = self.create_user(
             email,
             password=password
@@ -35,7 +36,7 @@ class UserManager(BaseUserManager):
         user.save(using=self.db)
         return user
 
-    def create_superuser(self, email, password, ** extra_fields):
+    def create_superuser(self, email, password, **extra_fields):
         user = self.create_user(
             email,
             password=password,
@@ -45,28 +46,29 @@ class UserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self.db)
         return user
-        
+
+
 class MyUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
-        verbose_name = 'email address',
-        max_length = 255,
-        unique = True,
+        verbose_name='email address',
+        max_length=255,
+        unique=True,
     )
+
     is_active = models.BooleanField(default=True)
     is_student = models.BooleanField(default=False)
     is_sponsor = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
 
-
-    USERNAME_FIELD = 'email'    
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     objects = UserManager()
 
     def get_full_name(self):
         return self.email
-    
+
     def get_short_name(self):
         return self.email
 
@@ -86,4 +88,3 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     @property
     def is_admin(self):
         return self.admin
-
