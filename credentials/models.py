@@ -8,6 +8,12 @@ GENDER = [
     ('F', 'Female')
 ]
 
+USER_TYPE = [
+    ('STAFF', 'Staff'),
+    ('SPONSOR', 'Sponsor'),
+    ('STUDENT', 'Student')
+]
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, ** extra_fields):
         if not email:
