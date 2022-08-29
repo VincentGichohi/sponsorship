@@ -28,3 +28,4 @@ class School(models.Model):
         return self.school_name
 
 
+class ReasonsForSponsorship(models.Model):
