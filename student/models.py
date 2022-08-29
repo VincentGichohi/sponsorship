@@ -24,8 +24,14 @@ class School(models.Model):
     academic_level = models.CharField(max_length=30)
     expected_year_of_completion = models.DateTimeField(auto_now_add=True)
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         return self.school_name
 
 
 class Reasons(models.Model):
+    reasons = models.TextField()
+    recommendation_letter = models.FileField(upload_to='images')
+
+    def __str__(self):
+        return self.reasons
