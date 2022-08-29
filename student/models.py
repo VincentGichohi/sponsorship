@@ -12,7 +12,8 @@ class Student(models.Model):
     birth_certificate = models.ImageField(blank=False)
     national_id = models.ImageField(blank=False)
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         return self.first_name + " " + self.last_name
 
 class School(models.Model):
