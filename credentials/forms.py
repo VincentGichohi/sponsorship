@@ -30,9 +30,9 @@ class RegisterForm(forms.ModelForm):
         return email
 
     def clean(self):
-        '''
+        """
         Verify both passwords match.
-        '''
+        """
         cleaned_data = super().clean()
         password = cleaned_data.get("password")
         password_2 = cleaned_data.get("password_2")
