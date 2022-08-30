@@ -1,6 +1,7 @@
 from tabnanny import verbose
 from django.db import models
 from django.utils import timezone
+from django.utils.timezone import now
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 GENDER = [
@@ -62,7 +63,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, default=now, editable=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
