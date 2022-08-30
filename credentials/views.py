@@ -5,6 +5,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from credentials.models import MyUser
 from django.urls import reverse, reverse_lazy
 
+
 class SignupView(SuccessMessageMixin, CreateView):
     template_name = 'register.html'
     success_url = reverse_lazy('login')
