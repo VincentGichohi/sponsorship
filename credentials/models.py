@@ -54,7 +54,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
         max_length=255,
         unique=True,
     )
-    user_type = models.CharField(default="STUDENT", choices=USER_TYPE)
+    user_type = models.CharField(max_length=200, default="STUDENT", choices=USER_TYPE)
     gender = models.CharField(max_length=200, choices=GENDER)
     is_active = models.BooleanField(default=True)
     is_student = models.BooleanField(default=False)
