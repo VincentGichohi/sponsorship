@@ -62,8 +62,8 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     is_sponsor = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True, default=now, editable=False)
-    updated_at = models.DateTimeField(auto_now_add=True, editable=False)
+    created_at = models.DateTimeField(editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
