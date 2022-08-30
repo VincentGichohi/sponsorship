@@ -20,9 +20,9 @@ class RegisterForm(forms.ModelForm):
         fields = ['email']
 
     def clean_email(self):
-        '''
+        """
         Verify email is available.
-        '''
+        """
         email = self.cleaned_data.get('email')
         qs = User.objects.filter(email=email)
         if qs.exists():
@@ -54,9 +54,9 @@ class UserAdminCreationForm(forms.ModelForm):
         fields = ['email']
 
     def clean(self):
-        '''
+        """
         Verify both passwords match.
-        '''
+        """
         cleaned_data = super().clean()
         password = cleaned_data.get("password")
         password_2 = cleaned_data.get("password_2")
