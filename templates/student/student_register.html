@@ -3,6 +3,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 <form action="POST">
+    {% csrf_token %}
     {{ form||crispy }}
 </form>
 {% endblock %}
