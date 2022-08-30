@@ -3,7 +3,7 @@ from student.models import Student, School
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from credentials.forms import UserAdminCreationForm, UserAdminChangeForm
+from credentials.forms import UserAdminCreationForm, UserAdminChangeForm, MyUser
 
 admin.site.register(Student)
 admin.site.register(School)
@@ -42,4 +42,4 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(MyUser, UserAdmin)
