@@ -8,8 +8,7 @@ User = get_user_model()
 
 class RegisterForm(forms.ModelForm):
     """
-    The default 
-
+    The default
     """
 
     password = forms.CharField(widget=forms.PasswordInput)
