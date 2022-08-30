@@ -62,7 +62,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
