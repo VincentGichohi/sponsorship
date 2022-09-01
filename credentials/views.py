@@ -8,6 +8,6 @@ from django.urls import reverse, reverse_lazy
 
 class SignupView(SuccessMessageMixin, CreateView):
     template_name = 'student/student_register.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('student/login')
     form_class = RegisterForm
     success_message = "Your account has been created successfully."
