@@ -5,6 +5,7 @@
 <form action="POST">
     {% csrf_token %}
     {{ form|crispy }}
+    
     <input type="submit" value="Submit" >
 </form>
 {% endblock %}

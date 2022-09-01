@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 from credentials.models import MyUser
 from django.urls import reverse, reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class SignupView(SuccessMessageMixin, CreateView):
     template_name = 'student/student_register.html'
