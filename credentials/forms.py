@@ -22,3 +22,12 @@ class CustomerUserForm(FormSettings):
         'password': forms.PasswordInput(),
     }
     profile_pic = forms.ImageField()
+
+    def __init__(self, *args, **kwargs):
+        super(CustomerUserForm, self).__init__(*args, **kwargs)
+
+        if kwargs.get('instance'):
+            instance = kwargs.get('instance').admin.__dict__
+            self.fields['password'].required = False
+            for field in CustomerUserForm.Meta.fields:
+                self.fields[field].initial = instance.get(field)
