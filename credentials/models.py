@@ -50,3 +50,10 @@ class CustomUser(models.Model):
 
     def __str__(self):
         return self.last_name + " " + self.first_name
+
+
+@receiver(post_save, sender=CustomUser)
+def create_user_profile(sender, instance, **kwargs):
+    if created:
+        if instance.user_type == 1:
+            Admin.objects.create(admin=instance)
