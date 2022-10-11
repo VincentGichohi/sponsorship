@@ -29,3 +29,5 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(models.Model):
     USER_TYPE = ((1, "SPONSOR"), (2, "STAFF"), (3, "STUDENT"))
+    GENDER = [("M", "Male"), ("F", "Female")]
+
