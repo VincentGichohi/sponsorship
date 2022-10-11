@@ -27,6 +27,10 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
+class Session(models.Model):
+    start_year = models.DateField()
+    end_year = models.DateField()
+
 
 class CustomUser(models.Model):
     USER_TYPE = ((1, "SPONSOR"), (2, "STAFF"), (3, "STUDENT"))
