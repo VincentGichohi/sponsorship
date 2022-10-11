@@ -10,3 +10,6 @@ class FormSettings(forms.ModelForm):
         for field in self.visible_fields():
             field.field.widget.attrs['class'] = 'form-control'
 
+
+class CustomerUserForm(FormSettings):
+    email = forms.EmailField(required=True)
