@@ -27,7 +27,22 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
+
 class CustomUser(models.Model):
     USER_TYPE = ((1, "SPONSOR"), (2, "STAFF"), (3, "STUDENT"))
     GENDER = [("M", "Male"), ("F", "Female")]
 
+    username = None
+    email = models.EmailField(unique=True)
+    user_type = models.CharField(default=3, choices=USER_TYPE, max_length=1)
+    profile_pic = models.ImageField(upload_to='images')
+    address = models.TextField()
+    fcm_token = models.TextField(default="")  # for firebase notifications
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    USERNAME_FIELD = "email"
+    objects = CustomUserManager
+
+    def __str__(self):
+        return self.last_name + " " + self.first_name
