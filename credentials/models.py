@@ -32,10 +32,6 @@ class Session(models.Model):
     end_year = models.DateField()
 
 
-class Admin(models.Model):
-    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-
-
 class CustomUser(models.Model):
     USER_TYPE = ((1, "SPONSOR"), (2, "Staff"), (3, "STUDENT"))
     GENDER = [("M", "Male"), ("F", "Female")]
@@ -54,6 +50,10 @@ class CustomUser(models.Model):
 
     def __str__(self):
         return self.last_name + " " + self.first_name
+
+
+class Admin(models.Model):
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
 
 @receiver(post_save, sender=CustomUser)
