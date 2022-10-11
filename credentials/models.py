@@ -25,3 +25,7 @@ class CustomUserManager(BaseUserManager):
         assert extra_fields['is_staff']
         assert extra_fields['is_superuser']
         return self.create_user(email, password, **extra_fields)
+
+
+class CustomUser(models.Model):
+    USER_TYPE = ((1, "SPONSOR"), (2, "STAFF"), (3, "STUDENT"))
