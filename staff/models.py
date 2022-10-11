@@ -1,8 +1,3 @@
 from django.db import models
+from credentials.models import CustomUser
 
-import credentials.models
-from credentials.models import *
-
-
-class Staff(models.Model):
-    user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='user')
