@@ -32,7 +32,7 @@ class Session(models.Model):
     end_year = models.DateField()
 
 
-class CustomUser(models.Model):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     USER_TYPE = ((1, "SPONSOR"), (2, "Staff"), (3, "STUDENT"))
     GENDER = [("M", "Male"), ("F", "Female")]
 
@@ -46,6 +46,7 @@ class CustomUser(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []   # Email & Password are required by default
     objects = CustomUserManager
 
     def __str__(self):
