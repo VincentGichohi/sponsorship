@@ -32,8 +32,12 @@ class Session(models.Model):
     end_year = models.DateField()
 
 
+class Admin(models.Model):
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+
 class CustomUser(models.Model):
-    USER_TYPE = ((1, "SPONSOR"), (2, "STAFF"), (3, "STUDENT"))
+    USER_TYPE = ((1, "SPONSOR"), (2, "Staff"), (3, "STUDENT"))
     GENDER = [("M", "Male"), ("F", "Female")]
 
     username = None
@@ -57,3 +61,7 @@ def create_user_profile(sender, instance, **kwargs):
     if created:
         if instance.user_type == 1:
             Admin.objects.create(admin=instance)
+        if instance.user_type == 2:
+            Staff.objects.create(admin=instance)
+        if instance.user_type == 3:
+            Student.objects.create(admin=instance)
