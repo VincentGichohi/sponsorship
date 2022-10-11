@@ -49,3 +49,6 @@ class CustomUserForm(FormSettings):
                     raise forms.ValidationError("The given email is already registered")
         return formEmail
 
+    class Meta:
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'email', 'gender', 'password', 'profile_pic', 'address']
