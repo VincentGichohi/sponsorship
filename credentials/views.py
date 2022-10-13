@@ -19,3 +19,12 @@ def adminclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render(request, 'school/adminclick.html')
+
+
+# for showing signup/login button for teacher
+def teacherclick_view(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('afterlogin')
+    return render(request, 'school/teacherclick.html')
+
+
