@@ -13,7 +13,7 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, email, password=None, **extra_fields):
+    def create_staff_user(self, email, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
         return self.create_user(email, password, **extra_fields)
@@ -47,7 +47,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []   # Email & Password are required by default
-    objects = CustomUserManager
+    objects = CustomUserManager()
 
     def __str__(self):
         return self.last_name + " " + self.first_name
