@@ -10,3 +10,6 @@ class Student(models.Model):
     email = models.EmailField(unique=True)
     birth_certificate = models.FileField(upload_to='images')
     national_id_file = models.FileField(upload_to='images')
+
+    def __str__(self):
+        return self.admin.last_name + " " + self.admin.first_name
