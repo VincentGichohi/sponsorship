@@ -54,6 +54,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.last_name + " " + self.first_name
 
+class Course(models.Model):
 
 class Staff(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
