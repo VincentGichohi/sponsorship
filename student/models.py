@@ -16,3 +16,5 @@ class Student(models.Model):
 
 
 class Subject(models.Model):
+    name = models.CharField(max_length=100)
+    staff = models.ForeignKey()
