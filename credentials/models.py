@@ -66,6 +66,12 @@ class Course(models.Model):
 
 class Staff(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.admin.last_name + " " + self.admin.first_name
+
+
 class Admin(models.Model):
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
