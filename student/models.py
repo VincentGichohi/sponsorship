@@ -3,7 +3,7 @@ from credentials.models import CustomUser
 
 
 class Student(models.Model):
-    admin = models.OneToOneField()
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     address = models.TextField()
     phone_number = models.TextField()
