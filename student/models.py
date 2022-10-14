@@ -1,5 +1,5 @@
 from django.db import models
-from credentials.models import CustomUser
+from credentials.models import CustomUser, Staff
 
 
 class Student(models.Model):
@@ -17,4 +17,4 @@ class Student(models.Model):
 
 class Subject(models.Model):
     name = models.CharField(max_length=100)
-    staff = models.ForeignKey()
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
