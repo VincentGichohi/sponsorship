@@ -39,6 +39,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = None
     email = models.EmailField(unique=True)
     user_type = models.CharField(default=3, choices=USER_TYPE, max_length=1)
+    first_name = models.CharField(max_length=100)
     profile_pic = models.ImageField(upload_to='images')
     address = models.TextField()
     fcm_token = models.TextField(default="")  # for firebase notifications
