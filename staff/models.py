@@ -1,4 +1,5 @@
 from django.db import models
+from credentials.models import *
 
 
 class Staff(models.Model):
