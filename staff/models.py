@@ -1,5 +1,6 @@
 from django.db import models
 from credentials.models import *
+from student.models import *
 
 
 class Staff(models.Model):
@@ -35,3 +36,5 @@ class NotificationStaff(models.Model):
 
 
 class Attendance(models.Model):
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
