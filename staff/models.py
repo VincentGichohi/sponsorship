@@ -12,3 +12,9 @@ class Staff(models.Model):
 
 class LeaveReportStaff(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    date = models.CharField(max_length=100)
+    message = models.TextField()
+    status = models.SmallIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
