@@ -44,3 +44,10 @@ class Attendance(models.Model):
 
 
 class AttendanceReport(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    status = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
