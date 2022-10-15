@@ -38,3 +38,7 @@ class NotificationStaff(models.Model):
 class Attendance(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
