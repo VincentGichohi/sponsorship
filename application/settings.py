@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'student.apps.StudentConfig',
     'sponsor.apps.SponsorConfig',
-    'staff.apps.StaffConfig',
     'credentials.apps.CredentialsConfig',
     'phonenumber_field',
     'crispy_forms',
