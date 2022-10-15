@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'sponsor.apps.SponsorConfig',
     'credentials.apps.CredentialsConfig',
     'staff.apps.StaffConfig',
+    'school.apps.SchoolConfig',
     'phonenumber_field',
     'crispy_forms',
 ]
