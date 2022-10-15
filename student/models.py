@@ -1,5 +1,6 @@
 from django.db import models
 from credentials.models import CustomUser, Staff, Course
+from staff.models import *
 
 
 class Student(models.Model):
