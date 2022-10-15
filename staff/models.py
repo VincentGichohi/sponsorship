@@ -28,3 +28,7 @@ class FeedBackStaff(models.Model):
 
 
 class NotificationStaff(models.Model):
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
