@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from credentials.models import *
 from student.models import *
@@ -44,8 +45,8 @@ class NotificationStaff(models.Model):
 
 
 class Attendance(models.Model):
-    session = models.ForeignKey("credentials.Session", on_delete=models.CASCADE)
-    subject = models.ForeignKey("student.Subject", on_delete=models.CASCADE)
+    session = models.ForeignKey("credentials.Session", on_delete=models.CASCADE, null=False, default="")
+    subject = models.ForeignKey("student.Subject", on_delete=models.CASCADE, null=False, default="")
     date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -53,7 +54,7 @@ class Attendance(models.Model):
 
 class AttendanceReport(models.Model):
     student = models.ForeignKey("student.Student", on_delete=models.CASCADE)
-    attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE, null=False, default="")
     status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
