@@ -17,4 +17,7 @@ class SubjectForm(FormSettings):
 
     def __init__(self, *args, **kwargs):
         super(SubjectForm, self).__init__(*args, **kwargs)
-        
+
+    class Meta:
+        model = Subject
+        fields = ['name', 'staff', 'course']
