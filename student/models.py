@@ -1,5 +1,5 @@
 from django.db import models
-from credentials.models import CustomUser, Staff, Course
+from credentials.models import *
 from staff.models import *
 
 
