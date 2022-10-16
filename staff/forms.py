@@ -19,4 +19,8 @@ class StaffForm(CustomUserForm):
 class CourseForm(FormSettings):
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = Course
+        fields = ['name']
         
