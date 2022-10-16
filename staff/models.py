@@ -1,5 +1,5 @@
 from django.db import models
-from credentials.models import Staff
+from credentials.models import *
 from student.models import *
 
 
@@ -13,11 +13,11 @@ class Course(models.Model):
 
 class Staff(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    admin = models.OneToOneField("credentials.CustomUser", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.admin.last_name + " " + self.admin.first_name
-        
+
 
 class LeaveReportStaff(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
@@ -44,15 +44,15 @@ class NotificationStaff(models.Model):
 
 
 class Attendance(models.Model):
-    session = models.ForeignKey(Session, on_delete=models.CASCADE)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    session = models.ForeignKey("credentials.Session", on_delete=models.CASCADE)
+    subject = models.ForeignKey("student.Subject", on_delete=models.CASCADE)
     date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 
 class AttendanceReport(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey("student.Student", on_delete=models.CASCADE)
     attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
