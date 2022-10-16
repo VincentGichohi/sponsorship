@@ -64,3 +64,17 @@ class AdminForm(CustomUserForm):
         fields = CustomUserForm.Meta.fields
 
 
+
+class SessionForm(FormSettings):
+    def __init__(self, *args, **kwargs):
+        super(SessionForm, self).__init__(*args, **kwargs)
+    
+    class Meta:
+        model = Session
+        fields = "__all__"
+        widgets = {
+            'start_year': DateInput(attrs={'type': 'date'}),
+            'end_year': DateInput(attrs={'type': 'date'}),
+        }
+
+    
