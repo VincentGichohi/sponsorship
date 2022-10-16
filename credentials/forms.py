@@ -62,4 +62,5 @@ class AdminForm(CustomUserForm):
     class Meta(CustomUserForm.Meta):
         model = Admin
         fields = CustomUserForm.Meta.fields
-        
+
+
