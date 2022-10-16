@@ -23,4 +23,5 @@ class CourseForm(FormSettings):
     class Meta:
         model = Course
         fields = ['name']
-        
+
+

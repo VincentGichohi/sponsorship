@@ -12,3 +12,9 @@ class StudentForm(CustomUserForm):
         fields = CustomUserForm.Meta.fields + ['course', 'session']
 
 
+
+class SubjectForm(FormSettings):
+
+    def __init__(self, *args, **kwargs):
+        super(SubjectForm, self).__init__(*args, **kwargs)
+        
