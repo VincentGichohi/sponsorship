@@ -52,3 +52,14 @@ class CustomUserForm(FormSettings):
     class Meta:
         model = CustomUser
         fields = ['first_name', 'last_name', 'email', 'gender', 'password', 'profile_pic', 'address']
+
+
+class AdminForm(CustomUserForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomUserForm, self).__init__(*args, **kwargs)
+
+    class Meta(CustomUserForm.Meta):
+        model = Admin
+        fields = CustomUserForm.Meta.fields
+        
