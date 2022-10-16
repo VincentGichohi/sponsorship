@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'application.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'scholarship management system',
+        'PORT': '5432',
+        'HOST': '',
+        'USERNAME': 'postgres',
+        'PASSWORD': '0000'
     }
 }
 
