@@ -5,3 +5,7 @@ from .models import *
 
 class UserModel(UserAdmin):
     ordering = ('email',)
+
+
+admin.site.register(CustomUser, UserModel)
+admin.site.register(Session)
