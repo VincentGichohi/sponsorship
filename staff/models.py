@@ -13,7 +13,7 @@ class Course(models.Model):
         return self.name
 
 class Staff(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=False, default="")
     admin = models.OneToOneField("credentials.CustomUser", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -21,7 +21,7 @@ class Staff(models.Model):
 
 
 class LeaveReportStaff(models.Model):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, null=False, default="")
     date = models.CharField(max_length=100)
     message = models.TextField()
     status = models.SmallIntegerField(default=0)
@@ -30,7 +30,7 @@ class LeaveReportStaff(models.Model):
 
 
 class FeedBackStaff(models.Model):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, null=False, default="")
     feedback = models.TextField()
     reply = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -38,7 +38,7 @@ class FeedBackStaff(models.Model):
 
 
 class NotificationStaff(models.Model):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE, null=False, default="")
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -53,7 +53,7 @@ class Attendance(models.Model):
 
 
 class AttendanceReport(models.Model):
-    student = models.ForeignKey("student.Student", on_delete=models.CASCADE)
+    student = models.ForeignKey("student.Student", on_delete=models.CASCADE, null=False, default="")
     attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE, null=False, default="")
     status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
