@@ -18,8 +18,8 @@ class Student(models.Model):
 
 class Subject(models.Model):
     name = models.CharField(max_length=100)
-    # staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
-    # course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -28,7 +28,7 @@ class Subject(models.Model):
 
 
 class LeaveReportStudent(models.Model):
-    # student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
     date = models.CharField(max_length=200)
     message = models.TextField()
     status = models.SmallIntegerField(default=0)
@@ -37,7 +37,7 @@ class LeaveReportStudent(models.Model):
 
 
 class FeedbackStudent(models.Model):
-    # student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
     feedback = models.TextField()
     reply = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -45,7 +45,7 @@ class FeedbackStudent(models.Model):
 
 
 class NotificationStudent(models.Model):
-    # student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
