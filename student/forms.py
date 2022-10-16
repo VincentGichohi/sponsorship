@@ -9,4 +9,4 @@ class StudentForm(CustomUserForm):
 
     class Meta(CustomUserForm.Meta):
         model = Student
-        fields = 
+        fields = CustomUserForm.Meta.fields + ['course', 'session']
