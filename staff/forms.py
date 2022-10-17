@@ -36,3 +36,5 @@ class LeaveReportStaff(FormSettings):
             'date': DateInput(attrs={'type': 'date'}),
         }
 
+
+class FeedbackStaffForm(FormSettings):
