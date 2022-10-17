@@ -29,7 +29,7 @@ class LeaveReportStaff(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-class FeedBackStaff(models.Model):
+class FeedbackStaff(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE, null=False, default="")
     feedback = models.TextField()
     reply = models.TextField()
