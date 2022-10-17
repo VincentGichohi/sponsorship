@@ -32,3 +32,7 @@ class LeaveReportStaff(FormSettings):
     class Meta:
         model = LeaveReportStaff
         fields = ['date', 'message']
+        widgets = {
+            'date': DateInput(attrs={'type': 'date'}),
+        }
+
