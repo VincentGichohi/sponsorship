@@ -30,4 +30,8 @@ class LeaveReportStudentForm(FormSettings):
     class Meta:
         model = LeaveReportStudent
         fields = ['date', 'message']
-        
+        widgets = {
+            'date': DateInput(attrs={'type': 'date'}),
+        }
+
+
