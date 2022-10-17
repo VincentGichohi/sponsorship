@@ -21,3 +21,13 @@ class SubjectForm(FormSettings):
     class Meta:
         model = Subject
         fields = ['name', 'staff', 'course']
+
+
+class LeaveReportStudentForm(FormSettings):
+    def __init__(self, *args, **kwargs):
+        super(LeaveReportStudentForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = LeaveReportStudent
+        fields = ['date', 'message']
+        
