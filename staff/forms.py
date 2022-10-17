@@ -25,3 +25,10 @@ class CourseForm(FormSettings):
         fields = ['name']
 
 
+class LeaveReportStaff(FormSettings):
+    def __init__(self, *args, **kwargs):
+        super(LeaveReportStaff, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = LeaveReportStaff
+        fields = ['date', 'message']
