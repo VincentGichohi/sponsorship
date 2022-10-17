@@ -25,7 +25,7 @@ class CourseForm(FormSettings):
         fields = ['name']
 
 
-class LeaveReportStaff(FormSettings):
+class LeaveReportStaffForm(FormSettings):
     def __init__(self, *args, **kwargs):
         super(LeaveReportStaff, self).__init__(*args, **kwargs)
 
