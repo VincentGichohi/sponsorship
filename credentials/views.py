@@ -60,6 +60,11 @@ def doLogin(request, **kwargs):
             return redirect('/')
 
 
+def logout_user(request):
+    if request.user != None:
+        logout(request)
+    return redirect('/')
+
 
 
 
