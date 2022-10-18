@@ -21,3 +21,9 @@ def account_register(request):
         return render(request, 'registration.html')
 
 
+def account_login(request):
+    if request.user.is_authenticated:
+        if request.user.user_type == 1:
+            return redirect(reverse('adminDashboard'))
+
+
