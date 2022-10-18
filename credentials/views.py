@@ -24,6 +24,8 @@ def account_register(request):
 
 def doLogin(request, **kwargs):
     if request.method != "POST":
-        return HttpResponse()
+        return HttpResponse("<h4>Denied.</h4>")
+    else:
+
 
 
