@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import CustomUserForm
 from django.contrib.auth import login, logout
 from django.http import HttpResponse, HttpResponseRedirect
+import requests
 
 
 def account_register(request):
@@ -34,6 +35,11 @@ def doLogin(request, **kwargs):
             'secret': captcha_key,
             'response': captcha_token
         }
+        # Make a request
+        try:
+            captcha_server = requests.post(url=captcha_url, data=data)
+            response = json.loads(captcha_server.text)
+
 
 
 
