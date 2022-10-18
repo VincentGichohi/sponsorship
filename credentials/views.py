@@ -45,7 +45,10 @@ def doLogin(request, **kwargs):
                 return redirect('/')
         except:
             messages.error(request, 'Captcha could not be verified. Try again.')
+            return redirect('/')
 
+        # Authenticate
+        user =
 
 
 
