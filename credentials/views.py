@@ -3,6 +3,7 @@ from .email_backend import EmailBackend
 from django.contrib import messages
 from .forms import CustomUserForm
 from django.contrib.auth import login, logout
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 def account_register(request):
@@ -21,9 +22,8 @@ def account_register(request):
         return render(request, 'registration.html')
 
 
-def account_login(request):
-    if request.user.is_authenticated:
-        if request.user.user_type == 1:
-            return redirect(reverse('adminDashboard'))
+def doLogin(request, **kwargs):
+    if request.method != "POST":
+        return HttpResponse()
 
 
