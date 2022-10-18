@@ -44,5 +44,10 @@ class FeedbackStaffForm(FormSettings):
     class Meta:
         model = FeedbackStaff
         fields = ['feedback']
-        
 
+
+
+class StaffEditForm(CustomUserForm):
+    def __init__(self, *args, **kwargs):
+        super(StaffEditForm, self).__init__(*args, **kwargs)
+        

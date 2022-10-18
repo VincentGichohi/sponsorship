@@ -49,6 +49,13 @@ class CustomUserForm(FormSettings):
                     raise forms.ValidationError("The given email is already registered")
         return formEmail
 
+    def clean_password(self):
+        password = self.cleaned_data.get('password', None)
+        if self.instance.pk is not None:
+            if not password:
+                # return None
+                return self.instance.password
+
     class Meta:
         model = CustomUser
         fields = ['first_name', 'last_name', 'email', 'gender', 'password', 'profile_pic', 'address']
