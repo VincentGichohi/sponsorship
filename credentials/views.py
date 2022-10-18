@@ -5,6 +5,7 @@ from .forms import CustomUserForm
 from django.contrib.auth import login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 import requests
+import json
 
 
 def account_register(request):
