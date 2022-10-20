@@ -3,5 +3,5 @@ from credentials.views import *
 from . import views
 
 urlpatterns = [
-    # path('', views.home_view, name='index'),
+    path('register/', views.account_register, name='register'),
 ]
