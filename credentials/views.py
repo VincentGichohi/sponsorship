@@ -40,7 +40,7 @@ def doLogin(request, **kwargs):
         try:
             captcha_server = requests.post(url=captcha_url, data=data)
             response = json.loads(captcha_server.text)
-            if response['success'] == False:
+            if not response['success']:  # replaced response['success'] == False
                 messages.error(request, 'Invalid captcha. Try again.')
                 return redirect('/')
         except:
