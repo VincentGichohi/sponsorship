@@ -24,6 +24,10 @@ def account_register(request):
     return render(request, 'student/student_register.html', context)
 
 
+def login_page(request):
+    if request.user.is_authenticated:
+
+
 def doLogin(request, **kwargs):
     if request.method != "POST":
         return HttpResponse("<h4>Denied.</h4>")
