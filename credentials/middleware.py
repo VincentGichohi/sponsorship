@@ -15,4 +15,8 @@ class AccountCheckMiddleware(MiddlewareMixin):
             elif user.user_type == '2':
                 if modulename == 'main_app.student_views' or modulename == 'main_app.hod_views':
                     return redirect(reverse('staff_home'))
+            elif user.user_type == '3':
+                if modulename == 'main_app.hod_views' or modulename == 'main_app.staff_views':
+                    return redirect(reverse('student_home'))
+
 
