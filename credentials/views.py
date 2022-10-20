@@ -48,8 +48,9 @@ def doLogin(request, **kwargs):
             return redirect('/')
 
         # Authenticate
-        user = EmailBackend.authenticate(request, username=request.POST.get('email'), password=request.POST.get('password'))
-        if user != None:
+        user = EmailBackend.authenticate(request, username=request.POST.get('email'),
+                                         password=request.POST.get('password'))
+        if user is not None:
             login(request, user)
             if user.user_type == '1':
                 return redirect(reverse('admin_home'))
@@ -64,11 +65,3 @@ def logout_user(request):
     if request.user != None:
         logout(request)
     return redirect('/')
-
-
-
-
-
-
-
-
