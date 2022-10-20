@@ -5,4 +5,4 @@ from django.contrib import messages
 
 
 class AccountCheckMiddleware(MiddlewareMixin):
-    def
+    def process_view(self, request, view_func, view_args, view_kwargs):
