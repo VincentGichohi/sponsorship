@@ -21,7 +21,7 @@ def account_register(request):
             return redirect(reverse('account_login'))
         else:
             messages.error(request, "Provided data field validation failed.")
-        return render(request, 'registration.html')
+    return render(request, 'student/student_register.html', context)
 
 
 def doLogin(request, **kwargs):
