@@ -20,5 +20,9 @@ class AccountCheckMiddleware(MiddlewareMixin):
                     return redirect(reverse('student_home'))
             else:
                 return redirect(reverse('login_page'))
-
+        else:
+            if request.path == reverse('login_page') or modulename == 'django.contrib.auth.views' or request.path == reverse('user_login'):
+                pass
+            else:
+                return redirect(reverse('login_page'))
 
