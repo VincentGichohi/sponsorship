@@ -62,6 +62,6 @@ def doLogin(request, **kwargs):
 
 
 def logout_user(request):
-    if request.user != None:
+    if request.user is not None:
         logout(request)
     return redirect('/')
