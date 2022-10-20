@@ -10,4 +10,7 @@ class AccountCheckMiddleware(MiddlewareMixin):
         user = request.user  # Who is the current user?
         if user.is_authenticated:
             if user.user_type == '1':  # Admin
+                if modulename == 'main_app.student_views':
+                    return redirect(reverse('admin_home'))
+
 
