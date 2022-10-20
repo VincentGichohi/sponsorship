@@ -8,4 +8,6 @@ class AccountCheckMiddleware(MiddlewareMixin):
     def process_view(self, request, view_func, view_args, view_kwargs):
         modulename = view_func.__module__
         user = request.user  # Who is the current user?
+        if user.is_authenticated:
+            if user.user_type == '1':  # Admin
 
