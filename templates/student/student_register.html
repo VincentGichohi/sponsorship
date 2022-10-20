@@ -10,8 +10,6 @@
             <!-- <p class="login-box-msg">Register an account</p> -->
     <form action="{% url 'register' %}" method="POST">
                 {% csrf_token %}
-
-
                 <div class="modal-body">
                     {% for field in form1  %}
                     <div class="form-group has-feedback">
@@ -28,10 +26,6 @@
                         {{field}}
                     </div>
                     {% endfor %}
-
-
-
-
                     <div class="row">
                         <div class="col-xs-6">
                             <button type="submit" class="btn btn-primary btn-block btn-flat" name="login"><i
