@@ -35,7 +35,7 @@ def login_page(request):
     return render(request, 'credentials/login.html')
 
 
-def doLogin(request, **kwargs):
+def account_login(request, **kwargs):
     if request.method != "POST":
         return HttpResponse("<h4>Denied.</h4>")
     else:
