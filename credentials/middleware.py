@@ -26,3 +26,5 @@ class AccountCheckMiddleware(MiddlewareMixin):
             else:
                 return redirect(reverse('login_page'))
 
+
+
