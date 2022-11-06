@@ -3,6 +3,6 @@ from credentials.views import *
 from . import views
 
 urlpatterns = [
-    path('register/', views.account_register, name='register'),
-    path('login/', views.account_login, name='login'),
+    path('register/', views.account_register, name='account_register'),
+    path('login/', views.account_login, name='account_login'),
 ]
