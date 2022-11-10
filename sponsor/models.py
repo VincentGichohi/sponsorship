@@ -12,6 +12,7 @@ class Sponsor(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
     gender = models.CharField(choices=GENDER, max_length=1)
+    reasons_for_sponsorship = models.TextField(blank=False, null=False)
     is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
