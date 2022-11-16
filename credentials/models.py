@@ -34,8 +34,13 @@ class Session(models.Model):
     end_year = models.DateField()
 
 
+USER_TYPE = {
+    (1, "Sponsor"), 
+    (2, "Staff"), 
+    (3, "Student")
+}
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    USER_TYPE = ((1, "Sponsor"), (2, "Staff"), (3, "Student"))
+    # USER_TYPE = ((1, "Sponsor"), (2, "Staff"), (3, "Student"))
     GENDER = [("M", "Male"), ("F", "Female")]
 
     username = None
