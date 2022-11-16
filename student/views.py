@@ -25,4 +25,7 @@ def student_home(request):
         percent_absent  = math.ceil(100 - percent_present)
 
     subject_name = []
+    data_present = []
+    data_absent = []
+    subjects = Subject.objects.filter(course=student.course)
     
