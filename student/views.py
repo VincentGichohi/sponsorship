@@ -28,4 +28,16 @@ def student_home(request):
     data_present = []
     data_absent = []
     subjects = Subject.objects.filter(course=student.course)
-    
+    for subject in subjects:
+        attendance = Attendance.objects.filter(subject=subject)
+        present_count = Attendance.objects.filter(
+            attendance__in=attendance, status=True, student=student
+        ).count()
+        absent_count = AttendanceReport.objects.filter(
+            attendance__in=attendance, status=False, student=student
+        ).count()
+        subject_name.append(subject.name)
+        data_present.append(present_count)
+        data_absent.append(absent_count)
+
+
