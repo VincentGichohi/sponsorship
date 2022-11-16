@@ -8,6 +8,7 @@ class Student(models.Model):
     name = models.CharField(max_length=200)
     address = models.TextField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)
     phone_number = models.TextField()
     email = models.EmailField(unique=True)
     birth_certificate = models.FileField(upload_to='images')
