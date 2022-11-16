@@ -39,5 +39,18 @@ def student_home(request):
         subject_name.append(subject.name)
         data_present.append(present_count)
         data_absent.append(absent_count)
+    context = {
+        'total_attendance': total_attendance,
+        'percent_present': percent_present,
+        'percent_absent': percent_absent,
+        'total_subject': total_subject,
+        'subjects': subjects,
+        'data_present': data_present,
+        'data_absent': data_absent,
+        'data_name': subject_name,
+        'page_title': 'Student Homepage'
+    }
+    
+    return render(request, 'student_template/home_content.html', context)
 
 
