@@ -86,4 +86,26 @@ def student_view_attendance(request):
             return JsonResponse(json.dumps(json_data), safe=False)
         except Exception as e:
             return None
-            
+
+
+def student_apply_leave(request):
+    form = LeaveReportStudentForm(request.POST or None)
+    student = get_object_or_404(Student, admin_id=request.user.id)
+    context = {
+        'form': form,
+        'leave_history': LeaveReportStudent.objects.filter(student=student),
+        'page_title': 'Apply For Leave'
+    }
+    if request.method  == 'POST':
+        if form.is_valid():
+            try:
+                obj = form.save(commit=False)
+                obj.student = student
+                obj.save()
+                messages.success(request, "Application for leave has been submitted for review")
+            except Exception:
+                messages.error(request, "Could not Submit")
+        else:
+            messages.error(request, "Form has Errors!!")
+    return render(request, 'student_template/student_apply_leave.html', context)
+
