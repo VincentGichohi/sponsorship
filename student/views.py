@@ -131,4 +131,11 @@ def student_feedback(request):
         else:
             messages.error(request, 'Form has errors')
     return render(request, 'student_template/student_feedback.html', context)
-    
+
+
+def student_view_profile(request):
+    student = get_object_or_404(Student, admin=request.user)
+    form = StudentEditForm(request.POST or None, request.FILES or None, instance=student)
+    context = {
+        
+    }
