@@ -61,7 +61,13 @@ def student_view_attendance(request):
             'subjects': Subject.objects.filter(course=course),
             'page_title': 'View Attendance'
         }
-    return render(request, 'student_template/student_view_attendance.html', context)
-    
+        return render(request, 'student_template/student_view_attendance.html', context)
+    else:
+        subject_id = request.POST.get('subject')
+        start = request.POST.get('start_date')
+        end = request.POST.get('end_date')
+        try:
+            subject = get_object_or_404(Subject, id=subject_id)
+            
 
 
