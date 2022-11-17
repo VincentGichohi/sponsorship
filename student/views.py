@@ -68,6 +68,22 @@ def student_view_attendance(request):
         end = request.POST.get('end_date')
         try:
             subject = get_object_or_404(Subject, id=subject_id)
+            start_date = datetime.strptime(start, '%Y-%m-%d')
+            end_date = datetime.strptime(end, '%Y-%m-%d')
+            attendance = Attendance.objects.filter(
+                date__range = (start_date, end_date), subject=subject
+            )
+            attendance_reports = AttendanceReport.objects.filter(
+                attendance__in=attendance, student=student
+            )
+            json_data = []
+            for report in attendance_reports:
+                data = {
+                    'date': str(report.attendance.date),
+                    'status': report.status
+                }
+                json_data.append(data)
+            return JsonResponse(json.dumps(json_data), safe=False)
+        except Exception as e:
+            return None
             
-
-
