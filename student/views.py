@@ -50,7 +50,18 @@ def student_home(request):
         'data_name': subject_name,
         'page_title': 'Student Homepage'
     }
-    
     return render(request, 'student_template/home_content.html', context)
+
+@csrf_exempt
+def student_view_attendance(request):
+    student = get_object_or_404(Student, admin=request.user)
+    if request.method != 'POST':
+        course =  get_object_or_404(Course, id=student.course.id)
+        context = {
+            'subjects': Subject.objects.filter(course=course),
+            'page_title': 'View Attendance'
+        }
+    return render(request, 'student_template/student_view_attendance.html', context)
+    
 
 
