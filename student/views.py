@@ -177,3 +177,9 @@ def student_fcmtoken(request):
     student_user = get_object_or_404(CustomUser, id=request.user.id)
     try:
         student_user.fcm_token = token
+        student_user.save()
+        return HttpResponse("True")
+    except Exception as e:
+        return HttpResponse("False")
+
+
