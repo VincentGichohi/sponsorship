@@ -53,7 +53,7 @@ class NotificationStudent(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-class StudentReport(models.Model):
+class StudentResult(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     test = models.FloatField(default=0)
