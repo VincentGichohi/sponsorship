@@ -7,4 +7,9 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from .forms import *
 from .models import *
+from credentials.models import *
+from student.models import * 
+from credentials.forms import *
+from student.forms import *
+
 
