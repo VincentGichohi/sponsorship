@@ -164,4 +164,9 @@ def student_view_profile(request):
                 admin.save()
                 messages.success(request, 'Profile Updated')
                 return redirect(reverse('student_view_profile'))
-                
+            else:
+                messages.error(request, 'Invalid Data Provide')
+        except Exception as e:
+            messages.error(request, 'Error Occured While updating Profile' + str(e))
+    return render(request, 'student_template/student_view_profile.html',context)
+    

@@ -1,5 +1,5 @@
 from django.db import models
-from credentials.models import *
+from credentials.models import CustomUser, CustomUserManager, Admin
 from staff.models import *
 
 
