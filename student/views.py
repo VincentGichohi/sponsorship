@@ -183,3 +183,13 @@ def student_fcmtoken(request):
         return HttpResponse("False")
 
 
+
+def student_view_notification(request):
+    student = get_object_or_404(Student, admin=request.user)
+    notifications = NotificationStudent.objects.filter(student=student)
+    context = {
+        'notifications': notifications,
+        'page_title': "View Notifications"
+    }
+    return render(request, 'student_template/student_view_notification.html', context)
+    
