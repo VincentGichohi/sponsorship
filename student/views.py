@@ -169,4 +169,11 @@ def student_view_profile(request):
         except Exception as e:
             messages.error(request, 'Error Occured While updating Profile' + str(e))
     return render(request, 'student_template/student_view_profile.html',context)
-    
+
+
+@csrf_exempt
+def student_fcmtoken(request):
+    token = request.POST.get('token')
+    student_user = get_object_or_404(CustomUser, id=request.user.id)
+    try:
+        student_user.fcm_token = token
