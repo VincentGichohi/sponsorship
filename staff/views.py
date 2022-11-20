@@ -37,3 +37,15 @@ def staff_home(request):
     }
     return render(request, 'staff_template/home_content.html', context)
 
+
+def staff_take_attendance(request):
+    staff = get_object_or_404(Staff, admin=request.user)
+    subjects = Subject.objects.filter(staff_id=staff)
+    sessions = Session.objects.all()
+    context = {
+        'subjects': subjects,
+        'sessions': sessions,
+        'page_title': 'Take Attendance'
+    }
+    return render(request, 'staf_template/staff_take_attendance.html', context)
+    
