@@ -245,4 +245,7 @@ def staff_view_notification(request):
         'page_title': 'View Notifications'
     }
     return render(request, 'staff_template/staff_view_notification.html', context)
+
+
+def staff_add_result(request):
     
