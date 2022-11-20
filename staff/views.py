@@ -48,4 +48,16 @@ def staff_take_attendance(request):
         'page_title': 'Take Attendance'
     }
     return render(request, 'staf_template/staff_take_attendance.html', context)
-    
+
+
+@csrf_exempt
+def get_students(request):
+    subject_id = request.POST.get('subject')
+    session_id = request.POST.get('session')
+    try:
+        subject = get_object_or_404(Subject, id=subject_id)
+        session_id = get_object_or_404(Session, id=session_id)
+        students = Student.objects.filter(
+            course_id=subject.course_id, session=session
+        )
+        
