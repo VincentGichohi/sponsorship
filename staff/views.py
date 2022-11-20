@@ -277,4 +277,9 @@ def staff_add_result(request):
         except Exception as e:
             messages.warning(request, 'Error Occured While Processing Form')
     return render(request, 'staff_template/staf_add_result.html', context)
-    
+
+
+@csrf_exempt
+def fetch_student_result(request):
+    try:
+        
