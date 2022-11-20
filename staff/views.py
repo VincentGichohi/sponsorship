@@ -184,4 +184,7 @@ def staff_feedback(request):
             except Exception as e:
                 messages.error(request, 'Could not Submit')
     return render(request, 'staff_template/staff_feedback.html', context)
+
+
+def staff_view_profile(request):
     
