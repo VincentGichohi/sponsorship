@@ -56,8 +56,17 @@ def get_students(request):
     session_id = request.POST.get('session')
     try:
         subject = get_object_or_404(Subject, id=subject_id)
-        session_id = get_object_or_404(Session, id=session_id)
+        session = get_object_or_404(Session, id=session_id)
         students = Student.objects.filter(
             course_id=subject.course_id, session=session
         )
-        
+        student_data = []
+        for student in students:
+            data = {
+                'id': student.id,
+                'name': student.admin.last_name + " " + student.admin.first_name
+            }
+            student_data.append(data)
+        return JsonResponse(json.dumps(student_data), content_type='application/json', safe=False)
+    except Exception as e:
+        return e
