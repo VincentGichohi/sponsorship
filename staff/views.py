@@ -143,4 +143,6 @@ def update_attendance(request):
 
     return HttpResponse("OK")
 
+
+def staff_apply_leave(request):
     
