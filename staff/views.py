@@ -145,4 +145,21 @@ def update_attendance(request):
 
 
 def staff_apply_leave(request):
+    form = LeaveReportStaffForm(request.POST or None)
+    staff = get_object_or_404(Staff, admin_id=request.user.id)
+    context = {
+        'form': form,
+        'leave_history': LeaveReportStaff.objects.filter(staff=staff),
+        'page_title': 'Apply for Leave'
+    }
+    if request.method == 'POST':
+        if form.is_valid():
+            try:
+                obj = form.save(commit=False)
+                obj.staff = staff
+                obj.save()
+                messages.success(request, 'Application for leave has been submitted for review')
+            except Exception as e:
+                messages.error(request, 'Could not Apply')
+    return render(request, 'staff_template/staff_apply_leave.html', context)
     
