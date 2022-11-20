@@ -124,4 +124,11 @@ def get_student_attendance(request):
         return JsonResponse(json.dumps(student_data), content_type='application/json', safe=False)
     except Exception as e:
         return e
-        
+
+@csrf_exempt
+def update_attendance(request):
+    student_data = request.POST.get('student_ids')
+    date = request.POST.get('date')
+    students = json.loads(student_data)
+    try:
+        attendance = 
