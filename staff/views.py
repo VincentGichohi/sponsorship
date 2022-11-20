@@ -93,4 +93,16 @@ def save_attendance(request):
         return None
 
     return HttpResponse("OK")
+
+
+def staff_update_attendance(request):
+    staff = get_object_or_404(Staff, admin=request.user)
+    subjects = Subject.objects.filter(staff_id=staff)
+    sessions =  Session.objects.all()
+    context = {
+        'subjects': subjects,
+        'sessions': sessions,
+        'page_title': 'Update Attendance'
+    }
+    return render(request, 'staff_template/staff_update_attendance.html', context)
     
