@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
 import json
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
@@ -159,10 +159,29 @@ def staff_apply_leave(request):
                 obj.staff = staff
                 obj.save()
                 messages.success(request, 'Application for leave has been submitted for review')
+                return redirect(reverse('staff_apply_leave'))
             except Exception as e:
                 messages.error(request, 'Could not Apply')
     return render(request, 'staff_template/staff_apply_leave.html', context)
 
 
 def staff_feedback(request):
+    form = FeedbackStaffForm(request.POST or None)
+    staff = get_object_or_404(Staff, admin_id=request.user.id)
+    context = {
+        'form': form,
+        'feedback': FeedbackStaff.objects.filter(staff=staff),
+        'page_title': 'Add Feedback'
+    }
+    if request.method == 'POST':
+        if form.is_valid():
+            try:
+                obj = form.save(commit=False)
+                obj.staff = staff
+                obj.save()
+                messages.success(request, 'Feedback submitted for review')
+                return redirect(reverse('staff_feedback'))
+            except Exception as e:
+                messages.error(request, 'Could not Submit')
+    return render(request, 'staff_template/staff_feedback.html', context)
     
