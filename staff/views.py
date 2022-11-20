@@ -131,4 +131,16 @@ def update_attendance(request):
     date = request.POST.get('date')
     students = json.loads(student_data)
     try:
-        attendance = 
+        attendance = get_object_or_404(Attendance, id=date)
+
+        for student_dict in students:
+            student = get_object_or_404(Student, admin_id=student_dict.get('id'))
+            attendance_report = get_object_or_404(AttendanceReport, student=student, attendance=attendance)
+            attendance_report.status = student_dict.get('status')
+            attendance_report.save()
+    except Exception as e:
+        return None
+
+    return HttpResponse("OK")
+
+    
