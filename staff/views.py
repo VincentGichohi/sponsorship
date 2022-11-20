@@ -226,4 +226,12 @@ def staff_view_profile(request):
                 
 @csrf_exempt
 def staff_fcmtoken(request):
-    
+    token = request.GET.get('token')
+    try:
+        staff_user = get_object_or_404(CustomUser, id=request.user.id)
+        staff_user.fcm_token = token
+        staff_user.save()
+        return HttpResponse("True")
+    except Exception as e:
+        return HttpResponse("False")
+        
